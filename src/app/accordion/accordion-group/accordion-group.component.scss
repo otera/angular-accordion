@@ -1,14 +1,14 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   cursor: pointer;
-  background-color: #eee;
+  background-color: rgb(247, 247, 247);
   color: #444;
   padding: 18px;
   width: 100%;
   text-align: left;
-  border: none;
-  // outline: none;
-  outline: solid 1px #6c757d;
+  // border: none;
+  outline: none;
+  border: solid 1px rgb(216, 216, 216);
   transition: 0.3s;
   .title {
     word-break: break-all;
@@ -23,7 +23,10 @@
 
 /* Style the accordion panel. Note: hidden by default */
 .panel {
-  margin: 12px;
+  padding: 10px 12px;
   background-color: white;
   overflow: hidden;
+  border-style: solid;
+  border-color: rgb(216, 216, 216);
+  border-width: 0px 1px 1px 1px;
 }
