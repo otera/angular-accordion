@@ -10,15 +10,14 @@
   outline: none;
   border: solid 1px rgb(216, 216, 216);
   transition: 0.3s;
+  // タイトル
   .title {
     word-break: break-all;
   }
-}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active,
-.accordion:hover {
-  background-color: rgb(194, 225, 255);
+  // 選択時
+  &.active {
+    background-color: rgb(194, 225, 255);
+  }
 }
 
 /* Style the accordion panel. Note: hidden by default */
