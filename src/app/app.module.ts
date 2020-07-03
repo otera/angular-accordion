@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AccordionComponent } from './accordion/accordion.component';
 import { AccordionGroupComponent } from './accordion/accordion-group/accordion-group.component';
 import { BaseComponent } from './base/base.component';
+import { HoverDirective } from './directive/hover.directive';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { BaseComponent } from './base/base.component';
     AccordionComponent,
     AccordionGroupComponent,
     BaseComponent,
+    HoverDirective,
   ],
   imports: [
     BrowserModule,
