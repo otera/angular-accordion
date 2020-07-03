@@ -14,13 +14,20 @@
   .title {
     word-break: break-all;
   }
-  // 選択時
+  // 選択時付与
   &.active {
     background-color: rgb(194, 225, 255);
   }
-  &.hover {
-    background-color: lightgreen;
+  // プライマリー入力デバイスがホバーできる場合
+  @media (hover: hover) {
+    &:hover {
+      background-color: lightgreen;
+    }
   }
+  // directiveでhoverさせる場合に渡すclass
+  // &.hover {
+  //   background-color: lightgreen;
+  // }
 }
 
 /* Style the accordion panel. Note: hidden by default */
