@@ -15,9 +15,12 @@ export class BaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.cities.push({ title: 'title', desc: 'A-HAHAHAHAHA!' });
-    this.cities.push({ title: 'title2', desc: 'A-HAHAHAHAHA!!' });
     this.cities.push({
-      title: 'title3',
+      title: 'title2title2title2title2title2title2title2title2title2title2',
+      desc: 'A-HAHAHAHAHA!!',
+    });
+    this.cities.push({
+      title: 'title3 title3 title3 title3 title3 title3 title3 title3',
       desc: 'A-HAHAHAHAHA!<br>A-HAHAHAHAHA!!<br>A-HAHAHAHAHA!!!',
     });
   }

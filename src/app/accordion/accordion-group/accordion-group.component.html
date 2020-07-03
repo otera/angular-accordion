@@ -6,8 +6,10 @@
     (click)="onToggle()"
   >
     <div class="d-flex align-items-start">
-      <div class="flex-grow-1">{{ title }}</div>
-      <div class="mr-2">
+      <div class="flex-grow-1">
+        <span class="title">{{ title }}</span>
+      </div>
+      <div class="ml-2">
         <span *ngIf="expanded === false"
           ><fa-icon [icon]="faChevronDown"></fa-icon
         ></span>
