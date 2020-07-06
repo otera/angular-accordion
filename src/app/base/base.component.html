@@ -1,7 +1,11 @@
 <div class="container">
   <!-- アコーディオンの表示 -->
   <accordion mode="multiple" [closeOthers]="true">
-    <accordion-group *ngFor="let c of cities" [title]="c.title">
+    <accordion-group
+      *ngFor="let c of cities"
+      [title]="c.title"
+      [isOpen]="c.isOpen"
+    >
       <div [innerHTML]="c.desc"></div
     ></accordion-group>
   </accordion>
