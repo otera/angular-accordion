@@ -1,26 +1,22 @@
 <div class="my-2">
   <!-- Title -->
-  <button
-    class="accordion"
-    [ngClass]="{ active: expanded }"
-    (click)="onToggle()"
-  >
+  <button class="accordion" [ngClass]="{ active: isOpen }" (click)="onToggle()">
     <div class="d-flex align-items-start">
       <div class="flex-grow-1">
         <span class="title">{{ title }}</span>
       </div>
       <div class="ml-2">
-        <span *ngIf="expanded === false"
+        <span *ngIf="isOpen === false"
           ><fa-icon [icon]="faChevronDown"></fa-icon
         ></span>
-        <span *ngIf="expanded === true"
+        <span *ngIf="isOpen === true"
           ><fa-icon [icon]="faChevronUp"></fa-icon
         ></span>
       </div>
     </div>
   </button>
   <!-- Body -->
-  <div *ngIf="expanded" [@accordion] class="panel">
+  <div *ngIf="isOpen" [@accordion] class="panel">
     <div class="panel-body">
       <ng-content></ng-content>
     </div>

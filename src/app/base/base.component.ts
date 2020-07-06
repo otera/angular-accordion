@@ -23,5 +23,9 @@ export class BaseComponent implements OnInit {
       title: 'title3 title3 title3 title3 title3 title3 title3 title3',
       desc: 'A-HAHAHAHAHA!<br>A-HAHAHAHAHA!!<br>A-HAHAHAHAHA!!!',
     });
+    this.cities.push({
+      title: 'title4',
+      desc: 'Hello!<br>Hello!!<br>Hello!!!',
+    });
   }
 }

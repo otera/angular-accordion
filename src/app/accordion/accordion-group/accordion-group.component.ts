@@ -1,5 +1,14 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  Input,
+  Output,
+  Inject,
+  EventEmitter,
+} from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
+import { AccordionComponent } from '../accordion.component';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -19,38 +28,56 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
     ]),
   ],
 })
-export class AccordionGroupComponent {
+export class AccordionGroupComponent implements OnInit, OnDestroy {
   @Input() title: string;
-  @Output() toggleEmitter: EventEmitter<
-    AccordionGroupComponent
-  > = new EventEmitter<AccordionGroupComponent>();
+  /** 開閉状態が変化した場合通知 */
+  @Output() isOpenChange: EventEmitter<boolean> = new EventEmitter();
+  @Input()
+  get isOpen(): boolean {
+    return this._isOpen;
+  }
+  set isOpen(value: boolean) {
+    if (value !== this.isOpen) {
+      if (value) {
+        // 自身以外のComponentをCloseさせる
+        this.accordion.closeOtherPanels(this);
+      }
+      this._isOpen = value;
+
+      // イベントを通知
+      this.isOpenChange.emit(value);
+      Promise.resolve(null)
+        .then(() => {
+          this.isOpenChange.emit(value);
+        })
+        .catch((error: Error) => {
+          console.log(error);
+        });
+    }
+  }
 
   faChevronDown = faChevronDown;
   faChevronUp = faChevronUp;
 
-  // アコーディオン開閉状態
-  expanded: boolean = false;
-
-  constructor() {}
+  /** アコーディオン開閉状態 */
+  protected _isOpen = false;
+  protected accordion: AccordionComponent;
+  constructor(@Inject(AccordionComponent) accordion: AccordionComponent) {
+    this.accordion = accordion;
+  }
 
   /**
-   * タイトルクリックで、親にイベントを通知
+   * タイトルクリックでアコーディオンを開閉
    */
   onToggle() {
-    this.toggleEmitter.next(this);
+    this.isOpen = !this.isOpen;
   }
 
-  /**
-   * アコーディオン開閉
-   */
-  toggle() {
-    this.expanded = !this.expanded;
+  ngOnInit() {
+    this.accordion.addGroup(this);
   }
 
-  /**
-   * アコーディオンを閉じる
-   */
-  close() {
-    this.expanded = false;
+  ngOnDestroy() {
+    this.accordion.removeGroup(this);
   }
 }
